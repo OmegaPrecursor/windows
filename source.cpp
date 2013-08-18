@@ -23,6 +23,9 @@ int attackos [50];
 int strengthos [50];
 int inventoryos [50] [10];
 
+int npcx [50];
+int npcy [50];
+
 //player stats
 string playername;
 int hpplayer;
@@ -31,6 +34,9 @@ int staminaplayer;
 int attackplayer;
 int strengthplayer;
 int inventoryplayer [10];
+
+int x;
+int y;
 
 char map [10] [10] = {0};
 
