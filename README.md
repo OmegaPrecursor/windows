@@ -1,6 +1,7 @@
 windows
 =======
 
-windows code
+v0.3.0
+has movement acrossed a 10x10 map
 
-source is a work in progress
+the wasd controls are used for movement and exit closes the window also you must press enter to input each command
