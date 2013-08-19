@@ -8,8 +8,8 @@ will provide the following elements:
 -The ability to copy over contents between two inventory
    objects (mainly for when inventory objects are switched)
 -In addition, how many items the inventory can store is
-   fixed per object type. Therefore, if contents are switched
-   or copied over to a smaller inventory, items will be lost.
+   fixed per object instance. Therefore, if contents are switched
+   or copied over to a smaller inventory, items may be lost.
 
 This class will also have the following requirements:
 -The Inventory may only store objects of type Equipment and
