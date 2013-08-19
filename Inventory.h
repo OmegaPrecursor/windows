@@ -63,8 +63,8 @@ class Inventory{
         //Inventory(size_t, size_t, C_pack...);
         ~Inventory();
   //Friends
-         void swap(Inventory&, Inventory&);
-         void move(const Inventory&, Inventory&);
+         friend void swap(Inventory&, Inventory&);
+         friend void move(const Inventory&, Inventory&);
     private:
         E_Inv   equipment;
         C_Inv   consumables;
