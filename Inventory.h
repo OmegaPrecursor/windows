@@ -27,52 +27,54 @@ This definition is subject to change until the design of the
 
 class Inventory{
     public:
-  //Type aliases
-        typedef std::list<Equipment>  E_Inv;
-        typedef std::list<Consumable> C_Inv;
-        typedef std::string           Name;
-  //Read-only
-      //The total number of items the object can hold
+    //Type aliases
+        typedef Equipment               E_Item;
+        typedef Consumable              C_Item;
+        typedef std::list<Equipment>    E_Inv;
+        typedef std::list<Consumable>   C_Inv;
+        typedef std::string             Name;
+    //Read-only
+            //The total number of items the object can hold
         size_t size() const;
-      //The total amount of equipment the object can hold
+            //The total amount of equipment the object can hold
         size_t e_size() const;
-      //The total number of consumable items the object can hold
+            //The total number of consumable items the object can hold
         size_t c_size() const;
-      //The total number of items currently in the object
+            //The total number of items currently in the object
         size_t count() const;
-      //The total amount quipment currently in the object
+            //The total amount quipment currently in the object
         size_t e_count() const;
-      //The total number of consumable items currently in the object
+            //The total number of consumable items currently in the object
         size_t c_count() const;
-  //Getters and setters (-ish)
-      //The following extract items from the object and require
-      //    a name to access it. If no item is found, the function
-      //    will return a default constructed Item
-        Equipment get_equipment(const Name&);
-        Consumable get_consumable(const Name&);
-      //The following inserts items into the object
-        void add(const Equipment&);
-        void add(const Consumable&);
-  //Constructors and destructor
-      //Construct object with a certain size
+    //Getters and setters (-ish)
+            //The following extract items from the object and require
+            //    a name to access it. If no item is found, the function
+            //    will return a default constructed Item
+        E_Item get_equipment(const Name&);
+        C_Item get_consumable(const Name&);
+             //The following inserts items into the object
+        void add(const E_Item&);
+        void add(const C_Item&);
+    //Constructors and destructor
+            //Construct object with a certain size
         Inventory(size_t, size_t);
-      //Construct object with items
-        //template<Equipment... E_pack>
+            //Construct object with items (Parameter packs only in C++11)
+        //template<E_Item... E_pack>
         //Inventory(size_t, size_t, E_pack...);
-        //template<Consumable... C_pack>
+        //template<C_Item... C_pack>
         //Inventory(size_t, size_t, C_pack...);
         ~Inventory();
-  //Friends
-         friend void swap(Inventory&, Inventory&);
-         friend void copy(const Inventory&, Inventory&);
+    //Friends
+        friend void swap(Inventory&, Inventory&);
+        friend void copy(const Inventory&, Inventory&);
     private:
-        E_Inv   equipment;
-        C_Inv   consumables;
-        size_t  e_size, c_size;
+        E_Inv           equipment;
+        C_Inv           consumables;
+        const size_t  e_size, c_size;
 };
 
-   void swap(Inventory&, Inventory&);
-//Move from left parameter to right parameter
-   void copy(const Inventory&, Inventory&);
+void swap(Inventory&, Inventory&);
+    //Move from left parameter to right parameter
+void copy(const Inventory&, Inventory&);
 
 #endif
