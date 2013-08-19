@@ -94,4 +94,6 @@ void replace_contents(const Inventory&, Inventory&);
     //Add from left parameter to right parameter
 void copy_contents(const Inventory&, Inventory&);
 
+#include "Inventory.inl"
+
 #endif
