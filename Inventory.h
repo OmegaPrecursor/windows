@@ -70,7 +70,7 @@ class Inventory{
     private:
         E_Inv           equipment;
         C_Inv           consumables;
-        const size_t  e_size, c_size;
+        const size_t    e_max, c_max;
 };
 
 void swap(Inventory&, Inventory&);
