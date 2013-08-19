@@ -64,7 +64,7 @@ class Inventory{
         ~Inventory();
   //Friends
          friend void swap(Inventory&, Inventory&);
-         friend void move(const Inventory&, Inventory&);
+         friend void copy(const Inventory&, Inventory&);
     private:
         E_Inv   equipment;
         C_Inv   consumables;
@@ -73,6 +73,6 @@ class Inventory{
 
    void swap(Inventory&, Inventory&);
 //Move from left parameter to right parameter
-   void move(const Inventory&, Inventory&);
+   void copy(const Inventory&, Inventory&);
 
 #endif
