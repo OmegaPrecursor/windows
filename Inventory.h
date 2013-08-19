@@ -1,7 +1,7 @@
 //Brief:
 /**************************************************************
 This header holds the definition of an Inventory class that
-will provide the following elements:
+will provide the following capabilities:
 -The ability to store "Equipment" items
 -The ability to store "Consumable" items
 -The ability to swap contents between two inventory objects
@@ -14,6 +14,10 @@ will provide the following elements:
 This class will also have the following requirements:
 -The Inventory may only store objects of type Equipment and
    Consumable
+
+Other notes:
+-All members prefixed with "e_" refer to equipment while
+    members prefixed with "c_" refer to consumables.
 
 This definition is subject to change until the design of the
 "items" is finalized.
@@ -47,6 +51,9 @@ class Inventory{
             //The total number of consumable items currently in the object
         size_t c_count() const;
     //Getters and setters (-ish)
+            //The following return the first item in the inventory
+        E_Item get_equipment();
+        C_Item get_consumable();
             //The following extract items from the object and require
             //    a name to access it. If no item is found, the function
             //    will return a default constructed Item
@@ -55,6 +62,10 @@ class Inventory{
              //The following inserts items into the object
         void add(const E_Item&);
         void add(const C_Item&);
+    //Other methods
+        void clear();
+        void e_clear();
+        void c_clear();
     //Constructors and destructor
             //Construct object with a certain size
         Inventory(size_t, size_t);
@@ -67,14 +78,20 @@ class Inventory{
     //Friends
         friend void swap(Inventory&, Inventory&);
         friend void copy(const Inventory&, Inventory&);
+    protected:
+    //Helpers
+        template <class Container>
+            Item get_item_helper(const Name&, Container&);
     private:
         E_Inv           equipment;
         C_Inv           consumables;
         const size_t    e_max, c_max;
 };
 
-void swap(Inventory&, Inventory&);
-    //Move from left parameter to right parameter
-void copy(const Inventory&, Inventory&);
+void swap_contents(Inventory&, Inventory&);
+    //Replace contents of right parameter with left parameter's
+void replace_contents(const Inventory&, Inventory&);
+    //Add from left parameter to right parameter
+void copy_contents(const Inventory&, Inventory&);
 
 #endif
