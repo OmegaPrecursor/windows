@@ -62,10 +62,17 @@ class Inventory{
         //template<Consumable... C_pack>
         //Inventory(size_t, size_t, C_pack...);
         ~Inventory();
+  //Friends
+         void swap(Inventory&, Inventory&);
+         void move(const Inventory&, Inventory&);
     private:
         E_Inv   equipment;
         C_Inv   consumables;
         size_t  e_size, c_size;
 };
+
+   void swap(Inventory&, Inventory&);
+//Move from left parameter to right parameter
+   void move(const Inventory&, Inventory&);
 
 #endif
