@@ -78,9 +78,6 @@ class Inventory{
         template <typename InIter>
             Inventory(size_t, size_t, InIter, InIter)
         ~Inventory();
-    //Friends
-        friend void swap(Inventory&, Inventory&);
-        friend void copy(const Inventory&, Inventory&);
     protected:
     //Helpers
         template <class Container>
