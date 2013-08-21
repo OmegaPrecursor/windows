@@ -8,11 +8,25 @@
     call the default constructor Item::Item().
 ******************************************************************/
 
-  //Construct object with items (Parameter packs only in C++11)
-//template<E_Item... E_pack>
-//Inventory::Inventory(size_t, size_t, E_pack...);
-//template<C_Item... C_pack>
-//Inventory::Inventory(size_t, size_t, C_pack...);
+    //Construct object with items. This function can take
+    //  iterators from any container or array. Whether the
+    //  items are Consumables or Equipment shall be
+    //  resolved internally.
+template <typename InIter>
+    Inventory::Inventory(
+        size_t newesize,
+        size_t newcsize,
+        InIter currItem,
+        InIter endItem
+)
+    : equipment({})
+    , consumables({})
+    , e_max(newesize)
+    , c_max(newcsize)
+{
+    while(currItem != endItem)
+        this->add(*(currItem++));
+}
 
 template <class Container>
     Item Inventory::get_item_helper(const Name& key, Container& container)
