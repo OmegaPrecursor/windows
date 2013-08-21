@@ -68,12 +68,14 @@ class Inventory{
         void c_clear();
     //Constructors and destructor
             //Construct object with a certain size
+            //    Parameters reflect the new capacity for Equipment,
+            //    and the new capcity for Consumables
         Inventory(size_t, size_t);
             //Construct object with items. This function can take
             //  iterators from any container or array. Whether the
             //  items are Consumables or Equipment shall be
             //  resolved internally.
-        template <typename InIter, typename InIter>
+        template <typename InIter>
             Inventory(size_t, size_t, InIter, InIter)
         ~Inventory();
     //Friends
