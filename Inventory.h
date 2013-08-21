@@ -69,11 +69,12 @@ class Inventory{
     //Constructors and destructor
             //Construct object with a certain size
         Inventory(size_t, size_t);
-            //Construct object with items (Parameter packs only in C++11)
-        //template<E_Item... E_pack>
-        //Inventory(size_t, size_t, E_pack...);
-        //template<C_Item... C_pack>
-        //Inventory(size_t, size_t, C_pack...);
+            //Construct object with items. This function can take
+            //  iterators from any container or array. Whether the
+            //  items are Consumables or Equipment shall be
+            //  resolved internally.
+        template <typename InIter, typename InIter>
+            Inventory(size_t, size_t, InIter, InIter)
         ~Inventory();
     //Friends
         friend void swap(Inventory&, Inventory&);
@@ -90,9 +91,9 @@ class Inventory{
 
 void swap_contents(Inventory&, Inventory&);
     //Replace contents of right parameter with left parameter's
-void replace_contents(const Inventory&, Inventory&);
+void replace_contents(Inventory, Inventory&);
     //Add from left parameter to right parameter
-void copy_contents(const Inventory&, Inventory&);
+void copy_contents(Inventory, Inventory&);
 
 #include "Inventory.inl"
 
