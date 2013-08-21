@@ -1,13 +1,3 @@
-int staminaplayer;
-int attackplayer;
-int strengthplayer;
-int inventoryplayer [10];
-string command;
-
-//READ THIS x and y are reversed in the graphics sorry :(
-
-int x = 1;
-int y = 1;
 //prev = previous
 int prevx;
 int prevy;
@@ -15,6 +5,8 @@ int prevy;
 bool gameon = 1;
 
 char map [11] [11] = {0}; // map 10x10 the extra 1 is to avoid random numbers being put on the edge of the screen
+
+map [5] [5] = 219;
 
 map [y] [x] = '@';
 
@@ -43,6 +35,11 @@ if(command == "a")x--;
 if(command == "s")y++;
 if(command == "d")x++;
 if(command == "exit")gameon = 0;
+
+if(map[x] [y] != 0){
+x = prevx;
+y = prevy;
+}
 
 system ("CLS");
 
