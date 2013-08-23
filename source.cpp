@@ -91,10 +91,9 @@ x = prevx;
 y = prevy;
 }
 
-system ("CLS");
+cin.get(); 
 
 map [prevy] [prevx] = 0;
-
 }
 
 }
